@@ -1,5 +1,5 @@
 import javax.imageio.ImageIO;
 
 interface InterfaceFlou{
-    public ImageIO flou();
+    public ImageIO flou(String path);
 }
