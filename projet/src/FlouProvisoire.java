@@ -12,7 +12,7 @@ public class FlouProvisoire {
         this.img = img;
     }
 
-    public void flouterImage() throws IOException {
+    public BufferedImage flouterImage() throws IOException {
         BufferedImage copie = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
         //parcourir toute l'image par groupe de 9x9 pixels
         for (int i = 1; i < img.getWidth() - 1; i++) {
@@ -33,10 +33,10 @@ public class FlouProvisoire {
                 int moyenneB = (matrice[0][2] + matrice[1][2] + matrice[2][2] + matrice[3][2] + matrice[4][2] + matrice[5][2] + matrice[6][2] + matrice[7][2] + matrice[8][2]) / 9;
                 int pixel = new Color(moyenneR, moyenneG, moyenneB).getRGB();
                 copie.setRGB(i, j, pixel);
-
             }
         }
         File copieImg = new File("copieFlou.jpg");
         ImageIO.write(copie, "jpg", copieImg);
+        return copie;
     }
 }
