@@ -11,6 +11,7 @@ public class FlouProvisoire {
     public FlouProvisoire(BufferedImage img) {
         this.img = img;
     }
+        //enlever ligne noire
 
     public void flouterImage() throws IOException {
         BufferedImage copie = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
