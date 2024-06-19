@@ -28,6 +28,20 @@ public class PaletteBiome {
             EAU_PEU_PROFONDE,
             EAU_PROFONDE
     ));
+    public static List<Color> creerPaletteDeCouleurs() {
+        List<Color> palette = new ArrayList<>();
+        int step = 51; // Un pas de 51 génère environ 6^3 = 216 couleurs distinctes
+
+        for (int r = 0; r < 256; r += step) {
+            for (int g = 0; g < 256; g += step) {
+                for (int b = 0; b < 256; b += step) {
+                    palette.add(new Color(r, g, b));
+                }
+            }
+        }
+
+        return palette;
+    }
 
     public PaletteBiome(List<Color> biomes) {
         this.biome = biomes;

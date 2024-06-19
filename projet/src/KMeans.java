@@ -30,7 +30,6 @@ public class KMeans implements Algo{
             clusters = new int[taillepix];
 
             iteration++;
-            System.out.println(iteration);
             ArrayList<ArrayList<Color>> clustersColor = new ArrayList<>();
             for (int i = 0; i< couleurs.size(); i++){
                 clustersColor.add(new ArrayList<Color>());

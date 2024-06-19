@@ -59,7 +59,7 @@ public class FlouMoyenne implements InterfaceFlou {
                 }
             }
         }
-        File copieImg = new File("./resultats/copieFlou.jpg");
+        File copieImg = new File("/home/celie/Documents/s4/MethodeOptimisation/SAE_01.1_amaglio_bitsindou_ponroy/projet/resultats/copieFlou.jpg");
         ImageIO.write(copie, "jpg", copieImg);
         return copie;
     }
