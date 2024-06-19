@@ -4,10 +4,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+
 public class FlouGaussien implements InterfaceFlou{
     public int taille;
     public double sigma;
-    //flitres 
+    //flitres
     final int[][] matrice3x3 = {{1,2,1},{2,4,2},{1,2,1}};//sigma = 0.2 //taille = 9
     final int[][] matrice5x5 = {{1,4,7,4,1},{4,16,26,16,4},{7,26,41,26,7},{4,16,26,16,4},{1,4,7,4,1}};// sigma = 0.062 taille = 25
     //constructeur
@@ -29,8 +30,8 @@ public class FlouGaussien implements InterfaceFlou{
         int height =  img.getHeight();
 
         BufferedImage copie = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
-        //pour chaque pixel 
-        for (int i = 0; i < width ; i++) { 
+        //pour chaque pixel
+        for (int i = 0; i < width ; i++) {
             for (int j = 0; j < height ; j++) {
                 if(j<pixelNonCalcules||j>=(height-pixelNonCalcules)||i<pixelNonCalcules||(i>=width-pixelNonCalcules)){
                     copie.setRGB(i, j, img.getRGB(i, j));
@@ -58,7 +59,7 @@ public class FlouGaussien implements InterfaceFlou{
                     int resR = 0;
                     int resG = 0;
                     int resB = 0;
-                    
+
                     for(int z=0;z<taille;z++){//calcul final des couleurs du pixel en fonction des coef calculé par gauss
                         resR += matrice[z][0]*gauss[z];
                         resG += matrice[z][1]*gauss[z];
@@ -74,7 +75,7 @@ public class FlouGaussien implements InterfaceFlou{
                 }
             }
         }
-                
+
         File copieImg = new File("copieFlouGauss.jpg");
         ImageIO.write(copie, "jpg", copieImg);
         
