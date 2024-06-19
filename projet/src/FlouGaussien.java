@@ -11,7 +11,7 @@ public class FlouGaussien implements InterfaceFlou{
 
     //Méthode pour appliquer un flou Gaussien
     @Override
-    public ImageIO flou(String path) {
+    public void flou(String path) {
         //tableau
         //calcul de gauss pour chaque pixel
         //Gauss(x,y,sigma))
