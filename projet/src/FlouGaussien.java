@@ -76,7 +76,7 @@ public class FlouGaussien implements InterfaceFlou{
             }
         }
 
-        File copieImg = new File("copieFlouGauss.jpg");
+        File copieImg = new File("./resultats/copieFlouGauss.jpg");
         ImageIO.write(copie, "jpg", copieImg);
         
         return null;

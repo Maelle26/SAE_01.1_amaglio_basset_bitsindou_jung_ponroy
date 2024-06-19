@@ -59,7 +59,7 @@ public class FlouMoyenne implements InterfaceFlou {
                 }
             }
         }
-        File copieImg = new File("copieFlou.jpg");
+        File copieImg = new File("./resultats/copieFlou.jpg");
         ImageIO.write(copie, "jpg", copieImg);
         return copie;
     }
