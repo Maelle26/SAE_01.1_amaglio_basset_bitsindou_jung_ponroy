@@ -17,25 +17,14 @@ public class FlouGaussien implements InterfaceFlou{
 
     }
 
-    //tableau
-        //calcul de gauss pour chaque pixel de la matrice 
-        //Gauss(x,y,sigma))
-        //le mettre dans le tableau
-
-        //faire la "moyenne" de chaque couleurs de chaque pixel en prennant en compte le gaussien 
-        //moy = Gauss(x,y,sigma)*pixel(x,y) + Gauss(x,y,sigma)*pixel(x,y) + Gauss(x,y,sigma)*pixel(x,y).../taillematrice(25 pour 5)
-        // pixel 1                      pixel2                      pixel3
-        
-        //parcourir toute l'image par groupe de nxn pixels
-
-
     //Méthode pour appliquer un flou Gaussien
     @Override
-    public ImageIO flou(String path) throws IOException {
+    public BufferedImage flou(String path) throws IOException {
         int tailleLargeurMatrice = (int)Math.sqrt(taille);
         System.out.println("TAILLE LARGEUR MATRICE = "+tailleLargeurMatrice);
         BufferedImage img = ImageIO.read(new File(path));
-
+        int pixelNonCalcules= (tailleLargeurMatrice-1)/2;
+        System.out.println("TAILLE PIXEL NON CALCULe = "+pixelNonCalcules);
         int width = img.getWidth();
         int height =  img.getHeight();
 
@@ -43,17 +32,17 @@ public class FlouGaussien implements InterfaceFlou{
         //pour chaque pixel 
         for (int i = 0; i < width ; i++) { 
             for (int j = 0; j < height ; j++) {
-                if(j==0||j==height-1||i==0||i==width-1){
+                if(j<pixelNonCalcules||j>=(height-pixelNonCalcules)||i<pixelNonCalcules||(i>=width-pixelNonCalcules)){
                     copie.setRGB(i, j, img.getRGB(i, j));
                 }else{
-                    int [][] matrice = new int[taille][];
+                    int[][] matrice = new int[taille][];
                     int[] tab;
                     double[] gauss = new double[taille];
                     int x = 0;
                     double sommegauss = 0;
                     //pour chaque pixel de la matrice autour du pixel centre(courrant)
-                    for (int k = i-1; k < i+tailleLargeurMatrice-1; k++) {
-                        for (int l = j-1; l < j+tailleLargeurMatrice-1; l++) {
+                    for (int k = i-pixelNonCalcules; k < i+pixelNonCalcules+1; k++) {
+                        for (int l = j-pixelNonCalcules; l < j+pixelNonCalcules+1; l++) {
                             int pixel = img.getRGB(k,l);
                             tab = OutilCouleur.getTabColor(pixel);
                             matrice[x] = tab;//on garde les couleurs du pixel en (k,l)
@@ -63,7 +52,6 @@ public class FlouGaussien implements InterfaceFlou{
                             //calcul de gauss par rapport aux distances
                             gauss[x] = Gauss(distX, distY, sigma);
                             sommegauss += gauss[x];
-                            
                             x++;
                         }
                     }
