@@ -9,7 +9,6 @@ import java.util.Set;
 
 public class ClusterToImage {
     static void clusterToImage(int[] res, String path,int width ,int height,List<Color> couleurs) throws IOException{
-    
         BufferedImage image2 = new BufferedImage(width, height,BufferedImage.TYPE_3BYTE_BGR);
         int x=0;
         for(int i=0;i<width;i++){
