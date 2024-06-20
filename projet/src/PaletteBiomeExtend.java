@@ -2,8 +2,12 @@ import java.awt.Color;
 import java.util.List;
 
 public class PaletteBiomeExtend {
+
+    /**
+     * Liste des couleurs des biomes
+     */
     List<Color> biome;
-    
+
     // Définition des couleurs des biomes
     private static final Color TUNDRA = new Color(71, 70, 61);
     private static final Color TAIGA = new Color(43, 50, 35);
@@ -45,6 +49,13 @@ public class PaletteBiomeExtend {
             CULTURE,
             VILLE
     ));
+
+    /**
+     * Methode qui permet de retourner le nom d'un biome en fonction de sa couleur
+     *
+     * @param c couleur
+     * @return nom du biome
+     */
     public static String couleurToName(Color c) {
         if (c.equals(TUNDRA)) {
             return "TUNDRA";
@@ -87,7 +98,11 @@ public class PaletteBiomeExtend {
         }
     }
 
-
+    /**
+     * Constructeur de la classe PaletteBiome
+     *
+     * @param biomes
+     */
     public PaletteBiomeExtend(List<Color> biomes) {
         this.biome = biomes;
     }

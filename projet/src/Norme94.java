@@ -1,6 +1,14 @@
 import java.awt.*;
 
-public class Norme94 implements NormeCouleurs{
+public class Norme94 implements NormeCouleurs {
+
+    /**
+     * Calcul de la distance entre deux couleurs
+     *
+     * @param color1 couleur 1
+     * @param color2 couleur 2
+     * @return distance entre les deux couleurs (double)
+     */
     @Override
     public double distanceCouleur(Color color1, Color color2) {
         int[] lab = ConversionLAB.rgb2lab(color1.getRed(), color1.getGreen(), color1.getBlue());
@@ -21,9 +29,9 @@ public class Norme94 implements NormeCouleurs{
         double cCarré = Math.pow(c, 2);
         double h = Math.sqrt(a + b + cCarré);
 
-        double p1 = Math.pow(l /1,2);
-        double p2 = Math.pow(c /sc,2);
-        double p3 = Math.pow(h /sh,2);
+        double p1 = Math.pow(l, 2);
+        double p2 = Math.pow(c / sc, 2);
+        double p3 = Math.pow(h / sh, 2);
 
         return Math.sqrt(p1 + p2 + p3);
     }
