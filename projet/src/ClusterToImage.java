@@ -13,6 +13,7 @@ public class ClusterToImage {
         int x=0;
         for(int i=0;i<width;i++){
             for(int j = 0 ; j<height;j++){
+                if(res[x]!=-1)//si le pixel n'est pas un bruit
                 image2.setRGB(i, j, couleurs.get(res[x]).getRGB());
                 x++;
             }
