@@ -8,12 +8,13 @@ import java.util.List;
 import java.util.Set;
 
 public class ClusterToImage {
-    static void clusterToImage(int[] res, String path, int width, int height, List<Color> couleurs) throws IOException {
-
-        BufferedImage image2 = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
-        int x = 0;
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
+    static void clusterToImage(int[] res, String path,int width ,int height,List<Color> couleurs) throws IOException{
+    
+        BufferedImage image2 = new BufferedImage(width, height,BufferedImage.TYPE_3BYTE_BGR);
+        int x=0;
+        for(int i=0;i<width;i++){
+            for(int j = 0 ; j<height;j++){
+                if(res[x]!=-1)//si le pixel n'est pas un bruit
                 image2.setRGB(i, j, couleurs.get(res[x]).getRGB());
                 x++;
             }
