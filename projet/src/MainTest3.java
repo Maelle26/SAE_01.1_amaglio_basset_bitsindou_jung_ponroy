@@ -12,7 +12,7 @@ public class MainTest3 {
     public static void main(String[] args) {
         
         try {
-            String path = "img/SSUU.png";
+            String path = "img/SSUUsmall.png";
             BufferedImage image = ImageIO.read(new File(path));
             int maxIterations = 100; // nombre maximum d'itérations
             //List<Color> couleurs = PaletteBiome.DEFAULT.biome;
@@ -33,14 +33,14 @@ public class MainTest3 {
                     o++;  
                 }
             }
-            DBSCAN dbscan = new DBSCAN(10, 10, couleurs, kMeans, new int[]{image.getWidth(), image.getHeight()});
+            DBSCAN dbscan = new DBSCAN(1, 2, couleurs, kMeans, new int[]{image.getWidth(), image.getHeight()});
 
             int[] res = dbscan.algo(pixels);
             int maxIndex = Arrays.stream(res).max().getAsInt();
             for (int i = 0; i <= maxIndex; i++) {
                 ClusterToImage.clusterToImage(
                     res,
-                    "/home/celie/Documents/s4/MethodeOptimisation/SAE_01.1_amaglio_bitsindou_ponroy/projet/resultats/DBSCAN/cluster9"+i+".png",
+                    "resultats/DBSCAN/cluster9"+i+".png",
                     image.getWidth(),
                     image.getHeight(),
                     couleurs,
@@ -50,7 +50,7 @@ public class MainTest3 {
             }
             ClusterToImage.clusterToImage(
                     res,
-                    "/home/celie/Documents/s4/MethodeOptimisation/SAE_01.1_amaglio_bitsindou_ponroy/projet/resultats/DBSCAN/cluster9.png",
+                    "resultats/DBSCAN/cluster9.png",
                     image.getWidth(),
                     image.getHeight(),
                     couleurs);

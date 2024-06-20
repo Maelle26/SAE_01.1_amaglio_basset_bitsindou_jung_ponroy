@@ -3,7 +3,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PaletteBiome {
+
+    /**
+     * Liste des couleurs de la palette
+     */
     List<Color> biome;
+
+    /**
+     * Couleurs statiques pour les biomes
+     */
     private static final Color TUNDRA = new Color(71, 70, 61);
     private static final Color TAIGA = new Color(43, 50, 35);
     private static final Color FORET_TEMPEREE = new Color(59, 66, 43);
@@ -15,7 +23,9 @@ public class PaletteBiome {
     private static final Color EAU_PEU_PROFONDE = new Color(49, 83, 100);
     private static final Color EAU_PROFONDE = new Color(12, 31, 47);
 
-
+    /**
+     * Palette par défaut
+     */
     final static PaletteBiome DEFAULT = new PaletteBiome(List.of(
             TUNDRA,
             TAIGA,
@@ -28,9 +38,21 @@ public class PaletteBiome {
             EAU_PEU_PROFONDE,
             EAU_PROFONDE
     ));
+
+    /**
+     * Constructeur de la classe PaletteBiome
+     *
+     * @param biomes liste des couleurs
+     */
     public PaletteBiome(List<Color> biomes) {
         this.biome = biomes;
     }
+
+    /**
+     * Methode qui permet de creer une palette de couleurs
+     *
+     * @return une liste de couleurs
+     */
     public static List<Color> creerPaletteDeCouleurs() {
         List<Color> palette = new ArrayList<>();
         int step = 51; // Un pas de 51 génère environ 6^3 = 216 couleurs distinctes
@@ -46,7 +68,13 @@ public class PaletteBiome {
         return palette;
     }
 
-    public static String couleurToName(Color c){
+    /**
+     * Methode qui permet de récupérer le nom d'un biome à partir de sa couleur
+     *
+     * @param c couleur
+     * @return nom du biome
+     */
+    public static String couleurToName(Color c) {
         if (c.equals(TUNDRA)) {
             return "TUNDRA";
         } else if (c.equals(TAIGA)) {

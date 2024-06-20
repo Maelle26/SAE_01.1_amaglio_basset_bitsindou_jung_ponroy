@@ -2,8 +2,13 @@ import java.io.IOException;
 import java.awt.image.BufferedImage;
 
 
-interface InterfaceFlou{
+interface InterfaceFlou {
 
-    //Méthode pour appliquer un flou (Gaussien ou par moyenne)
-    public BufferedImage flou(String path) throws IOException ;
+    /**
+     * Applique un flou sur une image
+     *
+     * @param path chemin de l'image
+     * @return image floutée
+     */
+    public BufferedImage flou(String path) throws IOException;
 }

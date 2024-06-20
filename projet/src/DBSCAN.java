@@ -5,14 +5,21 @@ import java.util.List;
 
 public class DBSCAN implements Algo{
 
-    int eps; // en taille pixel
-    int minPts;
+    double eps; // en taille pixel
+    int minPts; // nombre de points minimum pour que un pixel soit central
     Algo algoClusterisation;//algorithme pour clusteriser les pixels en couleurs
-    int[] tailleImage;
+    int[] tailleImage; // taille de l'image
     List<Pixel> listePixelCluster;//liste des pixels du cluster de départ
     int[] clusters ;//tableau d'affectation des pixels aux clusters qui est retourné
 
-
+    /**
+     * Constructeur de la classe DBSCAN
+     * @param eps
+     * @param minPts
+     * @param couleurs
+     * @param algo algorithme pour clusteriser les pixels en couleurs
+     * @param tailleImage
+     */
     public DBSCAN(int eps , int minPts, List<Color> couleurs,Algo algo,int[] tailleImage) {
         this.eps = eps;
         this.minPts = minPts;
@@ -37,7 +44,7 @@ public class DBSCAN implements Algo{
 
         int x = 0;
         int y = 0;
-        int j = 0;
+        int j = 0; //indice du pixel dans res
         for (int numroCluster : res) {
             Pixel tmpPixel = new Pixel(x, y,j);
             listePixels.get(numroCluster).add(tmpPixel);
