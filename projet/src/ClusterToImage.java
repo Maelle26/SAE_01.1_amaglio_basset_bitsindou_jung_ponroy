@@ -3,11 +3,18 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ClusterToImage {
+    /**
+     * creer une image avec tout les clusters
+     * @param res
+     * @param path
+     * @param width
+     * @param height
+     * @param couleurs
+     * @throws IOException
+     */
     static void clusterToImage(int[] res, String path,int width ,int height,List<Color> couleurs) throws IOException{
         BufferedImage image2 = new BufferedImage(width, height,BufferedImage.TYPE_3BYTE_BGR);
         int x=0;
@@ -20,7 +27,17 @@ public class ClusterToImage {
         }
         ImageIO.write(image2, "JPG", new File(path));
     }
-
+    /**
+     * creer une image avec un cluster choisi
+     * @param res
+     * @param path
+     * @param width
+     * @param height
+     * @param couleurs
+     * @param clusterChoisi
+     * @param pathImageDepart
+     * @throws IOException
+     */
     static void clusterToImage(int[] res, String path, int width, int height, List<Color> couleurs, int clusterChoisi, String pathImageDepart) throws IOException {
         BufferedImage image2 = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
         appliquerFond(image2, pathImageDepart);
@@ -35,7 +52,17 @@ public class ClusterToImage {
         }
         ImageIO.write(image2, "JPG", new File(path));
     }
-
+    /**
+     * creer une image avec un cluster choisi et une légende
+     * @param res
+     * @param path
+     * @param width
+     * @param height
+     * @param couleurs
+     * @param clusterChoisi
+     * @param pathImageDepart
+     * @throws IOException
+     */
     static void clusterToImageWithLegend(int[] res, String path, int width, int height, List<Color> couleurs, int clusterChoisi, String pathImageDepart) throws IOException {
         BufferedImage image2 = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
         appliquerFond(image2, pathImageDepart);
@@ -50,7 +77,13 @@ public class ClusterToImage {
         }
         ImageIO.write(afficherBiomeImage(clusterChoisi, image2), "JPG", new File(path));
     }
-
+    /**
+     * affiche la legende du biome
+     * @param clusterChoisi
+     * @param bi
+     * @return
+     * @throws IOException
+     */
     static BufferedImage afficherBiomeImage(int clusterChoisi, BufferedImage bi) throws IOException {
         PaletteBiome p = PaletteBiome.DEFAULT;
         String draw = "Biome présent : " + PaletteBiome.couleurToName(p.biome.get(clusterChoisi));
@@ -66,7 +99,12 @@ public class ClusterToImage {
         g.dispose();
         return bi;
     }
-
+    /**
+     * appliquer un fond blanchatre à une image
+     * @param image2
+     * @param path
+     * @throws IOException
+     */
     static void appliquerFond(BufferedImage image2, String path) throws IOException {
         BufferedImage image1 = ImageIO.read(new File(path));
         //pour chaque pixel

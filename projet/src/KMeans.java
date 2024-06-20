@@ -10,13 +10,21 @@ public class KMeans implements Algo{
     List<Color> couleurs;
     NormeCouleurs distanceCouleur;
     private int[]  clusters;
-
+    /**
+     * Constructeur de la classe KMeans
+     * @param maxIterations
+     * @param couleurs
+     * @param normeCouleurs
+     */
     public KMeans(int maxIterations,List<Color> couleurs, NormeCouleurs normeCouleurs) {
         this.maxIterations = maxIterations;
         this.couleurs = couleurs;
         this.distanceCouleur = normeCouleurs;
 
     }
+    /**
+     * methode qui permet de clusteriser les pixels par couleurs
+     */
     public int[] algo(int[][] pixels) {
         //initialisation
         int taillepix = pixels.length;
@@ -61,6 +69,11 @@ public class KMeans implements Algo{
         }
         return clusters;
     }
+    /**
+     * calcul la moyenne des couleurs de la liste
+     * @param liste liste de couleurs
+     * @return
+     */
     public Color moyenneColor(List<Color> liste) {
         if(liste.size()==0){
             return null;
