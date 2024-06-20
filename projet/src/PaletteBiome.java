@@ -28,7 +28,6 @@ public class PaletteBiome {
             EAU_PEU_PROFONDE,
             EAU_PROFONDE
     ));
-
     public PaletteBiome(List<Color> biomes) {
         this.biome = biomes;
     }
@@ -46,4 +45,31 @@ public class PaletteBiome {
 
         return palette;
     }
+
+    public static String couleurToName(Color c){
+        if (c.equals(TUNDRA)) {
+            return "TUNDRA";
+        } else if (c.equals(TAIGA)) {
+            return "TAIGA";
+        } else if (c.equals(FORET_TEMPEREE)) {
+            return "FORET TEMPEREE";
+        } else if (c.equals(FORET_TROPICALE)) {
+            return "FORET TROPICALE";
+        } else if (c.equals(SAVANE)) {
+            return "SAVANE";
+        } else if (c.equals(PRAIRIE)) {
+            return "PRAIRIE";
+        } else if (c.equals(DESERT)) {
+            return "DESERT";
+        } else if (c.equals(GLACIER)) {
+            return "GLACIER";
+        } else if (c.equals(EAU_PEU_PROFONDE)) {
+            return "EAU PEU PROFONDE";
+        } else if (c.equals(EAU_PROFONDE)) {
+            return "EAU PROFONDE";
+        } else {
+            return "";
+        }
+    }
+
 }

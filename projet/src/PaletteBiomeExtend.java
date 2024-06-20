@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.util.List;
 
-public class PaletteBiome2 {
+public class PaletteBiomeExtend {
     List<Color> biome;
     
     // Définition des couleurs des biomes
@@ -25,7 +25,7 @@ public class PaletteBiome2 {
     private static final Color VILLE = new Color(128, 0, 0);
 
     // Palette par défaut avec toutes les couleurs définies
-    final static PaletteBiome DEFAULT = new PaletteBiome(List.of(
+    final static PaletteBiomeExtend DEFAULT_EXTEND = new PaletteBiomeExtend(List.of(
             TUNDRA,
             TAIGA,
             FORET_TEMPEREE,
@@ -45,8 +45,50 @@ public class PaletteBiome2 {
             CULTURE,
             VILLE
     ));
+    public static String couleurToName(Color c) {
+        if (c.equals(TUNDRA)) {
+            return "TUNDRA";
+        } else if (c.equals(TAIGA)) {
+            return "TAIGA";
+        } else if (c.equals(FORET_TEMPEREE)) {
+            return "FORET TEMPEREE";
+        } else if (c.equals(FORET_TROPICALE)) {
+            return "FORET TROPICALE";
+        } else if (c.equals(SAVANE)) {
+            return "SAVANE";
+        } else if (c.equals(PRAIRIE)) {
+            return "PRAIRIE";
+        } else if (c.equals(DESERT)) {
+            return "DESERT";
+        } else if (c.equals(GLACIER)) {
+            return "GLACIER";
+        } else if (c.equals(EAU_PEU_PROFONDE)) {
+            return "EAU PEU PROFONDE";
+        } else if (c.equals(EAU_PROFONDE)) {
+            return "EAU PROFONDE";
+        } else if (c.equals(PLAGE)) {
+            return "PLAGE";
+        } else if (c.equals(MANGROVE)) {
+            return "MANGROVE";
+        } else if (c.equals(MARAIS)) {
+            return "MARAIS";
+        } else if (c.equals(FORET_TROPICALE_HUMIDE)) {
+            return "FORET TROPICALE HUMIDE";
+        } else if (c.equals(FORET_BOREALE)) {
+            return "FORET BOREALE";
+        } else if (c.equals(BOIS)) {
+            return "BOIS";
+        } else if (c.equals(CULTURE)) {
+            return "CULTURE";
+        } else if (c.equals(VILLE)) {
+            return "VILLE";
+        } else {
+            return "";
+        }
+    }
 
-    public PaletteBiome2(List<Color> biomes) {
+
+    public PaletteBiomeExtend(List<Color> biomes) {
         this.biome = biomes;
     }
 }
