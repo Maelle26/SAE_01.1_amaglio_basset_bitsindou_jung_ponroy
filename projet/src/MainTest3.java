@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.io.File;
 import javax.imageio.ImageIO;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,12 +12,16 @@ public class MainTest3 {
     public static void main(String[] args) {
         
         try {
-            String path = "/home/celie/Documents/s4/MethodeOptimisation/SAE_01.1_amaglio_bitsindou_ponroy/projet/img/Planete 5small.jpeg";
+            String path = "img/SSUU.png";
             BufferedImage image = ImageIO.read(new File(path));
             int maxIterations = 100; // nombre maximum d'itérations
             //List<Color> couleurs = PaletteBiome.DEFAULT.biome;
             List<Color> couleurs = PaletteBiome.creerPaletteDeCouleurs();
-            KMeans kMeans = new KMeans(maxIterations,PaletteBiome.DEFAULT.biome,new NormeCIELAB());
+            List<Color> couleur2 = new ArrayList<Color>();
+            couleur2.add(Color.RED);
+            couleur2.add(Color.WHITE);
+            //couleur2.add(Color.GREEN);
+            KMeans kMeans = new KMeans(maxIterations,couleur2,new NormeCIELAB());
             int[][] pixels = new int[image.getWidth()*image.getHeight()][3];
             int o = 0;
             for (int i = 0; i < image.getWidth(); i++) {
@@ -28,14 +33,14 @@ public class MainTest3 {
                     o++;  
                 }
             }
-            DBSCAN dbscan = new DBSCAN(10, 4, couleurs, kMeans, new int[]{image.getWidth(), image.getHeight()});
+            DBSCAN dbscan = new DBSCAN(10, 10, couleurs, kMeans, new int[]{image.getWidth(), image.getHeight()});
 
             int[] res = dbscan.algo(pixels);
             int maxIndex = Arrays.stream(res).max().getAsInt();
             for (int i = 0; i <= maxIndex; i++) {
                 ClusterToImage.clusterToImage(
                     res,
-                    "/home/celie/Documents/s4/MethodeOptimisation/SAE_01.1_amaglio_bitsindou_ponroy/projet/resultats/clusterTEST9"+i+".png",
+                    "/home/celie/Documents/s4/MethodeOptimisation/SAE_01.1_amaglio_bitsindou_ponroy/projet/resultats/DBSCAN/cluster9"+i+".png",
                     image.getWidth(),
                     image.getHeight(),
                     couleurs,
@@ -43,6 +48,12 @@ public class MainTest3 {
                     path);
 
             }
+            ClusterToImage.clusterToImage(
+                    res,
+                    "/home/celie/Documents/s4/MethodeOptimisation/SAE_01.1_amaglio_bitsindou_ponroy/projet/resultats/DBSCAN/cluster9.png",
+                    image.getWidth(),
+                    image.getHeight(),
+                    couleurs);
             
         } catch (Exception e) {
             e.printStackTrace();
