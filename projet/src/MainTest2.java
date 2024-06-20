@@ -30,7 +30,7 @@ public class MainTest2 {
             int[] res = kMeans.algo(pixels);
             int maxIndex = Arrays.stream(res).max().getAsInt();
             for (int i = 0; i <= maxIndex; i++) {
-                ClusterToImage.clusterToImage(
+                ClusterToImage.clusterToImageWithLegend(
                     res,
                     "resultats/KMEANS/cluster"+i+".png",
                     image.getWidth(),

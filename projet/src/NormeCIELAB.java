@@ -1,6 +1,14 @@
 import java.awt.*;
 
-public class NormeCIELAB implements NormeCouleurs{
+public class NormeCIELAB implements NormeCouleurs {
+
+    /**
+     * Calcul de la distance entre deux couleurs
+     *
+     * @param color1 couleur 1
+     * @param color2 couleur 2
+     * @return distance entre les deux couleurs (double)
+     */
     @Override
     public double distanceCouleur(Color color1, Color color2) {
         int[] lab = ConversionLAB.rgb2lab(color1.getRed(), color1.getGreen(), color1.getBlue());

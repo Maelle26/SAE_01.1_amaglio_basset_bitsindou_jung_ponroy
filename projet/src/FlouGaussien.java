@@ -6,21 +6,52 @@ import java.io.IOException;
 
 
 public class FlouGaussien implements InterfaceFlou {
+
+    /**
+     * Taille de la matrice de flou
+     */
     public int taille;
+
+    /**
+     * Ecart type de la formule de Gauss
+     */
     public double sigma;
+
+    /**
+     * Boolean pour sauvegarder l'image
+     */
     private boolean save;
-    //flitres
+
+    /**
+     * Matrice de flou 3x3
+     */
     final int[][] matrice3x3 = {{1, 2, 1}, {2, 4, 2}, {1, 2, 1}};//sigma = 0.2 //taille = 9
+
+    /**
+     * Matrice de flou 5x5
+     */
     final int[][] matrice5x5 = {{1, 4, 7, 4, 1}, {4, 16, 26, 16, 4}, {7, 26, 41, 26, 7}, {4, 16, 26, 16, 4}, {1, 4, 7, 4, 1}};// sigma = 0.062 taille = 25
 
-    //constructeur
+    /**
+     * Constructeur de la classe FlouGaussien
+     *
+     * @param taillematrice taille de la matrice de flou
+     * @param sigma         ecart type de la formule de Gauss
+     * @param save          boolean pour sauvegarder l'image
+     */
     public FlouGaussien(int taillematrice, double sigma, boolean save) {
         this.taille = taillematrice;
         this.sigma = sigma;
         this.save = save;
     }
 
-    //Méthode pour appliquer un flou Gaussien
+    /**
+     * Applique un flou sur une image
+     *
+     * @param path chemin de l'image
+     * @return image floutée
+     * @throws IOException exception
+     */
     @Override
     public BufferedImage flou(String path) throws IOException {
         int tailleLargeurMatrice = (int) Math.sqrt(taille);
@@ -84,10 +115,14 @@ public class FlouGaussien implements InterfaceFlou {
         return copie;
     }
 
-    //faire return
-    //faire pour toutes le matrices
-
-    //Formule de Gauss
+    /**
+     * Formule de Gauss
+     *
+     * @param x
+     * @param y
+     * @param sigma
+     * @return
+     */
     public double Gauss(double x, double y, double sigma) {
         double puissanceE = (Math.pow(x, 2) + Math.pow(y, 2)) / (2 * Math.pow(sigma, 2));
         double division = 2 * Math.PI * (Math.pow(sigma, 2));

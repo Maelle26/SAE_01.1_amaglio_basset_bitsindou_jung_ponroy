@@ -6,15 +6,34 @@ import java.io.IOException;
 
 public class FlouMoyenne implements InterfaceFlou {
 
+    /**
+     * Taille de la matrice de flou
+     */
     int taille;
+
+    /**
+     * Boolean pour sauvegarder l'image
+     */
     boolean save;
 
+    /**
+     * Constructeur de la classe FlouMoyenne
+     *
+     * @param taillematrice taille de la matrice de flou
+     * @param save          boolean pour sauvegarder l'image
+     */
     public FlouMoyenne(int taillematrice, boolean save) {
         this.taille = taillematrice;
         this.save = save;
     }
-    //enlever ligne noire
 
+    /**
+     * Applique un flou sur une image
+     *
+     * @param path chemin de l'image
+     * @return image floutée
+     * @throws IOException exception
+     */
     public BufferedImage flou(String path) throws IOException {
         int tailleLargeurMatrice = (int) Math.sqrt(taille);
         BufferedImage img = ImageIO.read(new File(path));
