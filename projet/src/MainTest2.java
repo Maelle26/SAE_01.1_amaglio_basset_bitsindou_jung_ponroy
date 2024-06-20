@@ -2,6 +2,8 @@ import java.awt.image.BufferedImage;
 import java.awt.Color;
 import java.io.File;
 import javax.imageio.ImageIO;
+
+import java.util.Arrays;
 import java.util.List;
 
 public class MainTest2 {
@@ -26,10 +28,24 @@ public class MainTest2 {
                 }
             }
             int[] res = kMeans.algo(pixels);
-            ClusterToImage.clusterToImage(res,"/home/celie/Documents/s4/MethodeOptimisation/SAE_01.1_amaglio_bitsindou_ponroy/projet/resultats/clusterTEST6.png",image.getWidth(),image.getHeight(),couleurs);
-            ClusterToImage.clusterToImage(res,"/home/celie/Documents/s4/MethodeOptimisation/SAE_01.1_amaglio_bitsindou_ponroy/projet/resultats/clusterTEST61.png",image.getWidth(),image.getHeight(),couleurs,1,path);
-            ClusterToImage.clusterToImage(res,"/home/celie/Documents/s4/MethodeOptimisation/SAE_01.1_amaglio_bitsindou_ponroy/projet/resultats/clusterTEST62.png",image.getWidth(),image.getHeight(),couleurs,9,path);
+            int maxIndex = Arrays.stream(res).max().getAsInt();
+            for (int i = 0; i <= maxIndex; i++) {
+                ClusterToImage.clusterToImage(
+                    res,
+                    "/home/celie/Documents/s4/MethodeOptimisation/SAE_01.1_amaglio_bitsindou_ponroy/projet/resultats/KMEANS/cluster"+i+".png",
+                    image.getWidth(),
+                    image.getHeight(),
+                    couleurs,
+                    i,
+                    path);
 
+            }
+            ClusterToImage.clusterToImage(
+                    res,
+                    "/home/celie/Documents/s4/MethodeOptimisation/SAE_01.1_amaglio_bitsindou_ponroy/projet/resultats/KMEANS/cluster.png",
+                    image.getWidth(),
+                    image.getHeight(),
+                    couleurs);
         } catch (Exception e) {
             e.printStackTrace();
         }
