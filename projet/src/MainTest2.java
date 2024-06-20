@@ -11,7 +11,7 @@ public class MainTest2 {
     public static void main(String[] args) {
         
         try {
-            String path = "/home/celie/Documents/s4/MethodeOptimisation/SAE_01.1_amaglio_bitsindou_ponroy/projet/img/ImageTEST.jpg";
+            String path = "img/Planete 5small.jpeg";
             BufferedImage image = ImageIO.read(new File(path));
             int maxIterations = 100; // nombre maximum d'itérations
             List<Color> couleurs = PaletteBiome.DEFAULT.biome;
@@ -32,7 +32,7 @@ public class MainTest2 {
             for (int i = 0; i <= maxIndex; i++) {
                 ClusterToImage.clusterToImage(
                     res,
-                    "/home/celie/Documents/s4/MethodeOptimisation/SAE_01.1_amaglio_bitsindou_ponroy/projet/resultats/KMEANS/cluster"+i+".png",
+                    "resultats/KMEANS/cluster"+i+".png",
                     image.getWidth(),
                     image.getHeight(),
                     couleurs,
@@ -42,7 +42,7 @@ public class MainTest2 {
             }
             ClusterToImage.clusterToImage(
                     res,
-                    "/home/celie/Documents/s4/MethodeOptimisation/SAE_01.1_amaglio_bitsindou_ponroy/projet/resultats/KMEANS/cluster.png",
+                    "resultats/KMEANS/cluster.png",
                     image.getWidth(),
                     image.getHeight(),
                     couleurs);

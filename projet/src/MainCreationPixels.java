@@ -6,6 +6,7 @@ import javax.imageio.ImageIO;
 
 public class MainCreationPixels {
  public static void main(String[] args) throws IOException {
+    //creation d'une image de 50*50 pixels avec deux rectanges de couleur rouge et vert
     BufferedImage image2 = new BufferedImage(50, 50,BufferedImage.TYPE_3BYTE_BGR);
 
     for(int i=0;i<50;i++){
